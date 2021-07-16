@@ -22,7 +22,6 @@ export default {
   width: 171px;
   height: 41px;
   background-color: #5551f7;
-  font-family: "Montserrat";
   font-weight: 500;
   font-size: 13px;
   line-height: 16px;

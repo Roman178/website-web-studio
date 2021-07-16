@@ -21,5 +21,6 @@ export default {
 <style>
 #app {
   padding-top: 30px;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
 }
 </style>

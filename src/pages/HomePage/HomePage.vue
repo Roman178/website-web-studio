@@ -15,8 +15,16 @@
       <section class="presentation">
         <div>
           <p>Whales Design</p>
-          <h2>Мы помогаем зарабатывать в интернете</h2>
+          <h1>Мы помогаем зарабатывать в интернете</h1>
           <Button textButton="Обсудить проект" />
+        </div>
+        <div>
+          <ul class="carousel">
+            <li class="li-item">
+              <br />
+              <span class="item-span">Графический дизайн</span>
+            </li>
+          </ul>
         </div>
       </section>
       <section class="about"></section>
@@ -48,7 +56,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: "Montserrat";
 }
 .list {
   min-width: 410px;
@@ -77,4 +84,18 @@ export default {
   min-height: 443px;
   border: 1px solid black;
 }
+
+.carousel {
+  list-style-type: decimal-leading-zero;
+}
+
+.li-item::marker {
+  color: red;
+}
+
+/* .item-span {
+  position: absolute;
+  left: -15px;
+  top: 15px;
+} */
 </style>

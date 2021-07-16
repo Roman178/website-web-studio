@@ -21,6 +21,9 @@ export default {
 <style>
 #app {
   padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
 }
 </style>

@@ -1,47 +1,52 @@
 <template>
   <div>
-    <header class="header">
-      <img src="../../images/logo.svg" alt="logo" />
-      <ul class="list">
-        <li>Портфолио</li>
-        <li>Услуги и цены</li>
-        <li>Мы</li>
-        <li>Контакты</li>
-      </ul>
-      <p class="phone">+38 (097) 757 51 51</p>
-      <Button textButton="Обсудить проект" />
-    </header>
+    <Header />
     <main class="content">
       <section class="presentation">
-        <div>
-          <p>Whales Design</p>
-          <h1>Мы помогаем зарабатывать в интернете</h1>
+        <div class="presentation__main-block">
+          <p class="presentation__subtitle">Whales Design</p>
+          <h1 class="presentation__title">
+            Мы помогаем зарабатывать в интернете
+          </h1>
           <Button textButton="Обсудить проект" />
         </div>
-        <div>
-          <ul class="carousel">
-            <li class="li-item">
-              <br />
-              <span class="item-span">Графический дизайн</span>
-            </li>
-          </ul>
-        </div>
+        <ul class="carousel">
+          <li class="li-item">
+            <p class="li-item-num">01.</p>
+            <p class="li-item-title">Графический дизайн</p>
+          </li>
+        </ul>
       </section>
-      <section class="about"></section>
+      <section class="about">
+        <p>О нас</p>
+        <p>
+          Мы онлайн дизайн студия, которая, помогает нашим клиентам по всему
+          миру получать осмысленный дизайн, создавая, значимые связи между
+          людьми и брендами!
+        </p>
+        <p>
+          Выполняем проекты для ведущих веб-студий по всему миру в качестве
+          субподрядчиков. Ключевой состав команды работает с момента основания
+          компании. Мы гарантируем индивидуальный подход к каждому новому
+          веб-сайту, логотипу, и/или фирменному стилю.
+        </p>
+      </section>
       <section class="completed-projects"></section>
       <section class="briefs"></section>
       <section class="clients"></section>
       <section class="request"></section>
     </main>
-    <footer>Done</footer>
+    <footer></footer>
   </div>
 </template>
 
 <script>
 import Button from "../../components/Button.vue";
+import Header from "../../components/Header.vue";
 export default {
   components: {
     Button,
+    Header,
   },
   name: "HomePage",
 };
@@ -49,53 +54,82 @@ export default {
 
 <style scoped>
 @import url("../../fonts/fonts.css");
-.header {
-  margin: auto;
-  max-width: 1100px;
-  min-height: 65px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.list {
-  min-width: 410px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  list-style-type: none;
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 16px;
-}
-.content {
-  min-height: 200vh;
-  padding-top: 34px;
-}
 
-.phone {
-  font-weight: bold;
-  font-size: 13px;
-  line-height: 16px;
-  letter-spacing: 0.02em;
+.content {
+  padding-top: 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .presentation {
-  max-width: 980px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 980px;
   min-height: 443px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+}
+
+.presentation__main-block {
+  max-width: 261px;
+}
+
+.presentation__subtitle {
+  margin: 0 0 13px 0;
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 145%;
+  letter-spacing: 0.05em;
+  color: #1c1d28;
+}
+
+.presentation__title {
+  margin: 0 0 41px 0;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 145%;
+  letter-spacing: 0.02em;
+  color: #1c1d28;
 }
 
 .carousel {
-  list-style-type: decimal-leading-zero;
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  max-width: 534px;
+  width: 100%;
+  min-height: 443px;
 }
 
-.li-item::marker {
-  color: red;
+.li-item {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-image: url("../../images/present-img.png");
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-/* .item-span {
-  position: absolute;
-  left: -15px;
-  top: 15px;
-} */
+.li-item-num {
+  margin: 0;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 30px;
+  line-height: 145%;
+  letter-spacing: 0.02em;
+}
+
+.li-item-title {
+  margin: 0;
+  font-weight: bold;
+  font-size: 45px;
+  line-height: 145%;
+  letter-spacing: 0.02em;
+}
+
+.item-span {
+}
 </style>

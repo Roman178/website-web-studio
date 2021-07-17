@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
     <Header />
     <main class="content">
       <section class="presentation">
@@ -18,20 +18,36 @@
         </ul>
       </section>
       <section class="about">
-        <p>О нас</p>
-        <p>
+        <h3 class="about__title">О нас</h3>
+        <p class="about__main-paragraph">
           Мы онлайн дизайн студия, которая, помогает нашим клиентам по всему
           миру получать осмысленный дизайн, создавая, значимые связи между
           людьми и брендами!
         </p>
-        <p>
+        <p class="about__subparagraph">
           Выполняем проекты для ведущих веб-студий по всему миру в качестве
           субподрядчиков. Ключевой состав команды работает с момента основания
           компании. Мы гарантируем индивидуальный подход к каждому новому
           веб-сайту, логотипу, и/или фирменному стилю.
         </p>
       </section>
-      <section class="completed-projects"></section>
+      <section class="completed-projects">
+        <div>
+          <div>
+            <tabs>
+              <tab name="First tab">
+                First tab content
+              </tab>
+              <tab name="Second tab">
+                Second tab content
+              </tab>
+              <tab name="Third tab">
+                Third tab content
+              </tab>
+            </tabs>
+          </div>
+        </div>
+      </section>
       <section class="briefs"></section>
       <section class="clients"></section>
       <section class="request"></section>
@@ -43,10 +59,13 @@
 <script>
 import Button from "../../components/Button.vue";
 import Header from "../../components/Header.vue";
+import { Tabs, Tab } from "vue-tabs-component";
 export default {
   components: {
     Button,
     Header,
+    Tabs,
+    Tab,
   },
   name: "HomePage",
 };
@@ -55,7 +74,16 @@ export default {
 <style scoped>
 @import url("../../fonts/fonts.css");
 
+.page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .content {
+  max-width: 980px;
+  width: 100%;
   padding-top: 34px;
   display: flex;
   flex-direction: column;
@@ -66,7 +94,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 980px;
+  width: 100%;
   min-height: 443px;
   /* border: 1px solid black; */
 }
@@ -131,5 +159,40 @@ export default {
 }
 
 .item-span {
+}
+
+.about {
+  max-width: 830px;
+  align-self: flex-start;
+}
+
+.about__title {
+  margin: 0 0 15px 0;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 145%;
+  letter-spacing: 0.05em;
+  color: #1c1d28;
+}
+
+.about__main-paragraph {
+  margin: 0 0 40px 0;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 145%;
+  letter-spacing: 0.02em;
+  color: #1c1d28;
+}
+
+.about__subparagraph {
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 185%;
+  letter-spacing: 0.02em;
+  color: #1c1d28;
+}
+
+.tabs-component-tabs {
+  margin: 0;
 }
 </style>

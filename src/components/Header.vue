@@ -22,8 +22,8 @@ export default {
 
 <style scoped>
 .header {
-  margin: auto;
-  width: 1100px;
+  max-width: 1100px;
+  width: 100%;
   min-height: 65px;
   display: flex;
   align-items: center;

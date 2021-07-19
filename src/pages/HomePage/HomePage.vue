@@ -35,14 +35,17 @@
         <div>
           <div>
             <tabs>
-              <tab name="First tab">
+              <tab name="Логотипы">
                 First tab content
               </tab>
-              <tab name="Second tab">
+              <tab name="Веб-сайты">
                 Second tab content
               </tab>
-              <tab name="Third tab">
+              <tab name="Фирменный стиль">
                 Third tab content
+              </tab>
+              <tab name="Иллюстрации">
+                Fourth tab content
               </tab>
             </tabs>
           </div>
@@ -57,6 +60,8 @@
 </template>
 
 <script>
+// import "vue-tabs-component/docs/resources/tabs-component.css";
+import "./tabs.css";
 import Button from "../../components/Button.vue";
 import Header from "../../components/Header.vue";
 import { Tabs, Tab } from "vue-tabs-component";

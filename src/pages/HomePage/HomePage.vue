@@ -33,21 +33,26 @@
       </section>
       <section class="completed-projects">
         <div>
+          <h3 class="completed-projects__title">Наши работы</h3>
           <div>
-            <tabs>
-              <tab name="Логотипы">
-                First tab content
-              </tab>
-              <tab name="Веб-сайты">
-                Second tab content
-              </tab>
-              <tab name="Фирменный стиль">
-                Third tab content
-              </tab>
-              <tab name="Иллюстрации">
-                Fourth tab content
-              </tab>
-            </tabs>
+            <Tabs :options="{ useUrlFragment: false }">
+              <Tab name="Логотипы">
+                First Tab content
+              </Tab>
+              <Tab name="Веб-сайты">
+                Second Tab content
+              </Tab>
+              <Tab name="Фирменный стиль">
+                Third Tab content
+              </Tab>
+              <Tab name="Иллюстрации">
+                Fourth Tab content
+              </Tab>
+            </Tabs>
+            <div>
+              <p>Все работы</p>
+              <span class="completed-projects__arrow">&#129042;</span>
+            </div>
           </div>
         </div>
       </section>
@@ -66,6 +71,9 @@ import Button from "../../components/Button.vue";
 import Header from "../../components/Header.vue";
 import { Tabs, Tab } from "vue-tabs-component";
 export default {
+  created() {
+    console.log(12);
+  },
   components: {
     Button,
     Header,
@@ -124,6 +132,23 @@ export default {
   line-height: 145%;
   letter-spacing: 0.02em;
   color: #1c1d28;
+}
+
+.completed-projects {
+  width: 100%;
+  padding-top: 149px;
+}
+
+.completed-projects__title {
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 145%;
+  letter-spacing: 0.02em;
+  color: #1c1d28;
+}
+
+.completed-projects__arrow {
+  font-size: 30px;
 }
 
 .carousel {
@@ -190,6 +215,7 @@ export default {
 }
 
 .about__subparagraph {
+  margin: 0;
   font-weight: normal;
   font-size: 15px;
   line-height: 185%;

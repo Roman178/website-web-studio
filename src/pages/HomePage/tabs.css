@@ -8,6 +8,7 @@
 .tabs-component-tab {
   margin-right: 40px;
   transition: all 0.2s linear;
+  cursor: pointer;
 }
 
 .tabs-component-tab:last-of-type {
@@ -17,12 +18,10 @@
 .tabs-component-tab-a {
   color: inherit;
   text-decoration: none;
-  transition: all 0.2s linear;
 }
 
 .is-active {
   color: #ff5c66;
   text-decoration: underline;
   text-underline-offset: 10px;
-  transition: all 0.2s linear;
 }

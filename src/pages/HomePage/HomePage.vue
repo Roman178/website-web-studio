@@ -35,7 +35,32 @@
         <div>
           <h3 class="completed-projects__title">Наши работы</h3>
           <div>
-            <Tabs :options="{ useUrlFragment: false }">
+            <div class="tabs-component">
+              <ul class="tabs-component-tabs">
+                <li class="tabs-component-tab">
+                  <a class="tabs-component-tab-a">First</a>
+                </li>
+                <li
+                  :class="{ 'is-active': firstTab }"
+                  class="tabs-component-tab"
+                >
+                  <a class="tabs-component-tab-a">Second</a>
+                </li>
+                <li class="tabs-component-tab">
+                  <a class="tabs-component-tab-a">Third</a>
+                </li>
+              </ul>
+              <div class="tabs-component-panels">
+                <section class="tabs-component-panel">
+                  …
+                </section>
+              </div>
+            </div>
+            <!-- <Tabs
+              cache-lifetime="1"
+              @changed="tabTestTwo"
+              :options="{ useUrlFragment: false }"
+            >
               <Tab name="Логотипы">
                 First Tab content
               </Tab>
@@ -48,11 +73,8 @@
               <Tab name="Иллюстрации">
                 Fourth Tab content
               </Tab>
-            </Tabs>
-            <div>
-              <p>Все работы</p>
-              <span class="completed-projects__arrow">&#129042;</span>
-            </div>
+              <Tab name="Все работы"> </Tab>
+            </Tabs> -->
           </div>
         </div>
       </section>
@@ -69,16 +91,27 @@
 import "./tabs.css";
 import Button from "../../components/Button.vue";
 import Header from "../../components/Header.vue";
-import { Tabs, Tab } from "vue-tabs-component";
+// import { Tabs, Tab } from "vue-tabs-component";
 export default {
-  created() {
-    console.log(12);
+  data() {
+    return {
+      firstTab: true,
+      secondTab: false,
+      thirdTab: false,
+      fourthTab: false,
+    };
+  },
+
+  methods: {
+    tabTestTwo(selectedTab) {
+      console.log(selectedTab);
+    },
   },
   components: {
     Button,
     Header,
-    Tabs,
-    Tab,
+    // Tabs,
+    // Tab,
   },
   name: "HomePage",
 };

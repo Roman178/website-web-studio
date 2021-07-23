@@ -3,24 +3,7 @@
     <Header />
     <main class="content">
       <div class="conten__wrapper">
-        <section class="presentation">
-          <div class="presentation__wrapper">
-            <div class="presentation__main-block">
-              <p class="presentation__subtitle">Whales Design</p>
-              <h1 class="presentation__title">
-                Мы помогаем зарабатывать в интернете
-              </h1>
-              <Button textButton="Обсудить проект" />
-            </div>
-            <ul class="carousel">
-              <li class="li-item">
-                <p class="li-item-num">01.</p>
-                <p class="li-item-title">Графический дизайн</p>
-              </li>
-            </ul>
-          </div>
-          <img src="../../images/load-carousel.svg" alt="" />
-        </section>
+        <Presentation />
         <section class="about">
           <h3 class="about__title">О нас</h3>
           <p class="about__main-paragraph">
@@ -39,25 +22,27 @@
       <section class="completed-projects">
         <div class="completed-projects__wrapper">
           <h3 class="completed-projects__title">Наши работы</h3>
-
-          <div class="tabs-component">
-            <ul class="tabs-component-tabs">
+          <div class="completed-projects__tabs-box">
+            <ul class="completed-projects__tabs-list">
               <li
                 v-for="(isTabActive, numberOfTab) in selectedTab"
                 :key="numberOfTab"
                 @click="selectTab(numberOfTab)"
-                :class="{ 'is-active': isTabActive }"
-                class="tabs-component-tab"
+                :class="{ 'completed-projects__tab_is-active': isTabActive }"
+                class="completed-projects__tab"
               >
-                <a class="tabs-component-tab-a">{{ numberOfTab }} </a>
+                <a class="completed-projects__tab-link">{{ numberOfTab }} </a>
               </li>
-              <li class="tabs-component-tab">
-                Все работы <span class="tabs-component__arrow">&#129042;</span>
+              <li class="completed-projects__tab">
+                Все работы
+                <img
+                  src="../../images/arrow.svg"
+                  alt="arrow"
+                  class="completed-projects__tab-arrow"
+                />
               </li>
             </ul>
-            <div class="tabs-component-panels">
-              <section class="tabs-component-panel"></section>
-            </div>
+            <div class="completed-projects__grid"></div>
           </div>
         </div>
       </section>
@@ -70,11 +55,15 @@
 </template>
 
 <script>
-import "./tabs.css";
-import Button from "../../components/Button.vue";
 import Header from "../../components/Header.vue";
+import Presentation from "./Presentation.vue";
 
 export default {
+  components: {
+    Header,
+    Presentation,
+  },
+  name: "HomePage",
   data() {
     return {
       selectedTab: {
@@ -101,11 +90,6 @@ export default {
       console.log(selectedTab);
     },
   },
-  components: {
-    Button,
-    Header,
-  },
-  name: "HomePage",
 };
 </script>
 
@@ -136,45 +120,6 @@ export default {
   min-height: 940px;
 }
 
-.presentation {
-  display: flex;
-  flex-direction: column;
-  /* justify-content: space-between; */
-  align-items: flex-start;
-  /* width: 100%; */
-  /* min-height: 443px; */
-  /* border: 1px solid black */
-}
-
-.presentation__wrapper {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.presentation__main-block {
-  max-width: 261px;
-}
-
-.presentation__subtitle {
-  margin: 0 0 13px 0;
-  font-weight: 300;
-  font-size: 13px;
-  line-height: 145%;
-  letter-spacing: 0.05em;
-  color: #1c1d28;
-}
-
-.presentation__title {
-  margin: 0 0 41px 0;
-  font-weight: 500;
-  font-size: 30px;
-  line-height: 145%;
-  letter-spacing: 0.02em;
-  color: #1c1d28;
-}
-
 .completed-projects {
   max-width: 1100px;
   width: 100%;
@@ -186,6 +131,7 @@ export default {
 }
 
 .completed-projects__title {
+  margin: 0 0 25px 0;
   font-weight: 500;
   font-size: 30px;
   line-height: 145%;
@@ -193,45 +139,44 @@ export default {
   color: #1c1d28;
 }
 
-.completed-projects__arrow {
-  font-size: 30px;
+.completed-projects__tabs-box {
 }
 
-.carousel {
+.completed-projects__tabs-list {
   list-style-type: none;
-  display: flex;
-  margin: 0;
+  margin: 0 0 30px 0;
   padding: 0;
-  max-width: 534px;
-  width: 100%;
-  min-height: 443px;
-}
-
-.li-item {
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: right center;
-  background-image: url("../../images/present-img.png");
   display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
-.li-item-num {
-  margin: 0;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 30px;
-  line-height: 145%;
-  letter-spacing: 0.02em;
+.completed-projects__tab {
+  margin-right: 40px;
+  transition: all 0.2s linear;
+  cursor: pointer;
 }
 
-.li-item-title {
-  margin: 0;
-  font-weight: bold;
-  font-size: 45px;
-  line-height: 145%;
-  letter-spacing: 0.02em;
+.completed-projects__tab:last-of-type {
+  margin-right: 0;
+  margin-left: auto;
+  color: #ff5c66;
+}
+
+.completed-projects__tab-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.completed-projects__tab-arrow {
+  display: inline-block;
+  font-size: 35px;
+  vertical-align: middle;
+  line-height: 0;
+}
+
+.completed-projects__tab_is-active {
+  color: #ff5c66;
+  text-decoration: underline;
+  text-underline-offset: 8px;
 }
 
 .item-span {

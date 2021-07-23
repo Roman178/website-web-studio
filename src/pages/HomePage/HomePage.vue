@@ -2,79 +2,62 @@
   <div class="page">
     <Header />
     <main class="content">
-      <section class="presentation">
-        <div class="presentation__main-block">
-          <p class="presentation__subtitle">Whales Design</p>
-          <h1 class="presentation__title">
-            Мы помогаем зарабатывать в интернете
-          </h1>
-          <Button textButton="Обсудить проект" />
-        </div>
-        <ul class="carousel">
-          <li class="li-item">
-            <p class="li-item-num">01.</p>
-            <p class="li-item-title">Графический дизайн</p>
-          </li>
-        </ul>
-      </section>
-      <section class="about">
-        <h3 class="about__title">О нас</h3>
-        <p class="about__main-paragraph">
-          Мы онлайн дизайн студия, которая, помогает нашим клиентам по всему
-          миру получать осмысленный дизайн, создавая, значимые связи между
-          людьми и брендами!
-        </p>
-        <p class="about__subparagraph">
-          Выполняем проекты для ведущих веб-студий по всему миру в качестве
-          субподрядчиков. Ключевой состав команды работает с момента основания
-          компании. Мы гарантируем индивидуальный подход к каждому новому
-          веб-сайту, логотипу, и/или фирменному стилю.
-        </p>
-      </section>
-      <section class="completed-projects">
-        <div>
-          <h3 class="completed-projects__title">Наши работы</h3>
-          <div>
-            <div class="tabs-component">
-              <ul class="tabs-component-tabs">
-                <li class="tabs-component-tab">
-                  <a class="tabs-component-tab-a">First</a>
-                </li>
-                <li
-                  :class="{ 'is-active': firstTab }"
-                  class="tabs-component-tab"
-                >
-                  <a class="tabs-component-tab-a">Second</a>
-                </li>
-                <li class="tabs-component-tab">
-                  <a class="tabs-component-tab-a">Third</a>
-                </li>
-              </ul>
-              <div class="tabs-component-panels">
-                <section class="tabs-component-panel">
-                  …
-                </section>
-              </div>
+      <div class="conten__wrapper">
+        <section class="presentation">
+          <div class="presentation__wrapper">
+            <div class="presentation__main-block">
+              <p class="presentation__subtitle">Whales Design</p>
+              <h1 class="presentation__title">
+                Мы помогаем зарабатывать в интернете
+              </h1>
+              <Button textButton="Обсудить проект" />
             </div>
-            <!-- <Tabs
-              cache-lifetime="1"
-              @changed="tabTestTwo"
-              :options="{ useUrlFragment: false }"
-            >
-              <Tab name="Логотипы">
-                First Tab content
-              </Tab>
-              <Tab name="Веб-сайты">
-                Second Tab content
-              </Tab>
-              <Tab name="Фирменный стиль">
-                Third Tab content
-              </Tab>
-              <Tab name="Иллюстрации">
-                Fourth Tab content
-              </Tab>
-              <Tab name="Все работы"> </Tab>
-            </Tabs> -->
+            <ul class="carousel">
+              <li class="li-item">
+                <p class="li-item-num">01.</p>
+                <p class="li-item-title">Графический дизайн</p>
+              </li>
+            </ul>
+          </div>
+          <img src="../../images/load-carousel.svg" alt="" />
+        </section>
+        <section class="about">
+          <h3 class="about__title">О нас</h3>
+          <p class="about__main-paragraph">
+            Мы онлайн дизайн студия, которая, помогает нашим клиентам по всему
+            миру получать осмысленный дизайн, создавая, значимые связи между
+            людьми и брендами!
+          </p>
+          <p class="about__subparagraph">
+            Выполняем проекты для ведущих веб-студий по всему миру в качестве
+            субподрядчиков. Ключевой состав команды работает с момента основания
+            компании. Мы гарантируем индивидуальный подход к каждому новому
+            веб-сайту, логотипу, и/или фирменному стилю.
+          </p>
+        </section>
+      </div>
+      <section class="completed-projects">
+        <div class="completed-projects__wrapper">
+          <h3 class="completed-projects__title">Наши работы</h3>
+
+          <div class="tabs-component">
+            <ul class="tabs-component-tabs">
+              <li
+                v-for="(isTabActive, numberOfTab) in selectedTab"
+                :key="numberOfTab"
+                @click="selectTab(numberOfTab)"
+                :class="{ 'is-active': isTabActive }"
+                class="tabs-component-tab"
+              >
+                <a class="tabs-component-tab-a">{{ numberOfTab }} </a>
+              </li>
+              <li class="tabs-component-tab">
+                Все работы <span class="tabs-component__arrow">&#129042;</span>
+              </li>
+            </ul>
+            <div class="tabs-component-panels">
+              <section class="tabs-component-panel"></section>
+            </div>
           </div>
         </div>
       </section>
@@ -87,22 +70,33 @@
 </template>
 
 <script>
-// import "vue-tabs-component/docs/resources/tabs-component.css";
 import "./tabs.css";
 import Button from "../../components/Button.vue";
 import Header from "../../components/Header.vue";
-// import { Tabs, Tab } from "vue-tabs-component";
+
 export default {
   data() {
     return {
-      firstTab: true,
-      secondTab: false,
-      thirdTab: false,
-      fourthTab: false,
+      selectedTab: {
+        ["Логотипы"]: true,
+        ["Веб-сайты"]: false,
+        ["Фирменный стиль"]: false,
+        ["Иллюстрации"]: false,
+      },
     };
   },
 
   methods: {
+    selectTab(tabToSelect) {
+      for (let key in this.selectedTab) {
+        if (key === tabToSelect) {
+          this.selectedTab[key] = true;
+        } else {
+          this.selectedTab[key] = false;
+        }
+      }
+    },
+
     tabTestTwo(selectedTab) {
       console.log(selectedTab);
     },
@@ -110,8 +104,6 @@ export default {
   components: {
     Button,
     Header,
-    // Tabs,
-    // Tab,
   },
   name: "HomePage",
 };
@@ -128,7 +120,6 @@ export default {
 }
 
 .content {
-  max-width: 980px;
   width: 100%;
   padding-top: 34px;
   display: flex;
@@ -136,13 +127,30 @@ export default {
   align-items: center;
 }
 
+.conten__wrapper {
+  width: 100%;
+  max-width: 980px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 940px;
+}
+
 .presentation {
   display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  align-items: flex-start;
+  /* width: 100%; */
+  /* min-height: 443px; */
+  /* border: 1px solid black */
+}
+
+.presentation__wrapper {
+  display: flex;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  min-height: 443px;
-  /* border: 1px solid black; */
 }
 
 .presentation__main-block {
@@ -168,8 +176,13 @@ export default {
 }
 
 .completed-projects {
+  max-width: 1100px;
   width: 100%;
   padding-top: 149px;
+}
+
+.completed-projects__wrapper {
+  padding-left: 65px;
 }
 
 .completed-projects__title {
@@ -226,7 +239,6 @@ export default {
 
 .about {
   max-width: 830px;
-  align-self: flex-start;
 }
 
 .about__title {

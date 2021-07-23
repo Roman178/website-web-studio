@@ -13,11 +13,20 @@
 
 .tabs-component-tab:last-of-type {
   margin-right: 0;
+  margin-left: auto;
+  color: #ff5c66;
 }
 
 .tabs-component-tab-a {
   color: inherit;
   text-decoration: none;
+}
+
+.tabs-component__arrow {
+  display: inline-block;
+  font-size: 35px;
+  vertical-align: middle;
+  line-height: 0;
 }
 
 .is-active {

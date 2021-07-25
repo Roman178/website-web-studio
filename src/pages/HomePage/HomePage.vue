@@ -42,8 +42,14 @@
                 />
               </li>
             </ul>
-            <div class="completed-projects__grid"></div>
           </div>
+        </div>
+        <div class="completed-projects__grid">
+          <img
+            class="completed-projects_big-img"
+            src="https://static.independent.co.uk/2021/07/01/23/SEI85370452.jpg?width=990&auto=webp&quality=75"
+            alt=""
+          />
         </div>
       </section>
       <section class="briefs"></section>
@@ -177,6 +183,19 @@ export default {
   color: #ff5c66;
   text-decoration: underline;
   text-underline-offset: 8px;
+}
+
+.completed-projects_big-img {
+  display: grid;
+  grid-template-areas: "";
+}
+
+.completed-projects_big-img {
+  width: 100%;
+  height: 560px;
+  /* display: block; */
+  object-fit: cover;
+  object-position: top;
 }
 
 .item-span {
